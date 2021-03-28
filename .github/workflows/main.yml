@@ -1,0 +1,31 @@
+on:
+
+  push:
+
+    branches:
+
+      - main
+jobs:
+
+  build-and-deploy:
+
+    runs-on: windows-latest
+
+    steps:
+
+    - uses: actions/checkout@main
+
+    - name: Deploy HTML Files to AppServiceCMST386
+
+      uses: azure/webapps-deploy@v1
+      
+      with:
+      
+        app-name: 'cmst386-zpeterson6'
+        
+        slot-name: 'production'
+        
+        publish-profile: ${{ secrets.AppServiceCMST386 }}
+        
+        
+    
